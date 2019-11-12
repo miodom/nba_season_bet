@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <title>NBA season bet</title>
+</head>
+<body>
+
+<div class="card-deck mr-0 ml-0 mt-2">
+    <div class="card">
+        <img src="static/logos/miami_logo.png" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title">Miami Heat</h4>
+            <p class="card-text">Over 43.5 (win percentage: 53.0)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">Info</h5>
+                <p class="card-text mb-0">Record: {{data['heat']['record']}} (win percentage {{data['heat']['win_percentage']}})</p>
+                <p class="card-text mb-0">Games played: {{data['heat']['games_played']}}</p>
+                <p class="card-text mb-0">Games left: {{data['heat']['games_left']}}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Last 5 games</h5>
+                {% for game in data['heat']['last_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Next 5 games</h5>
+                {% for game in data['heat']['next_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <div class="card">
+        <img src="static/logos/san_antonio_logo.png" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title">San Antonio Spurs</h4>
+            <p class="card-text">Over 45.5 (win percentage: 55.5)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">Info</h5>
+                <p class="card-text mb-0">Record: {{data['spurs']['record']}} (win percentage {{data['spurs']['win_percentage']}})</p>
+                <p class="card-text mb-0">Games played: {{data['spurs']['games_played']}}</p>
+                <p class="card-text mb-0">Games left: {{data['spurs']['games_left']}}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Last 5 games</h5>
+                {% for game in data['spurs']['last_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Next 5 games</h5>
+                {% for game in data['spurs']['next_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <div class="card">
+        <img src="static/logos/indiana_logo.png" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title">Indiana Pacers</h4>
+            <p class="card-text">Over 47.5 (win percentage: 57.9)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">Info</h5>
+                <p class="card-text mb-0">Record: {{data['pacers']['record']}} (win percentage {{data['pacers']['win_percentage']}})</p>
+                <p class="card-text mb-0">Games played: {{data['pacers']['games_played']}}</p>
+                <p class="card-text mb-0">Games left: {{data['pacers']['games_left']}}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Last 5 games</h5>
+                {% for game in data['pacers']['last_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Next 5 games</h5>
+                {% for game in data['pacers']['next_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+    <div class="card">
+        <img src="static/logos/detroit_logo.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">Detroit Pistons</h4>
+            <p class="card-text">Under 37.5 (win percentage: 45.7)</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="card-title">Info</h5>
+                <p class="card-text mb-0">Record: {{data['pistons']['record']}} (win percentage {{data['pistons']['win_percentage']}})</p>
+                <p class="card-text mb-0">Games played: {{data['pistons']['games_played']}}</p>
+                <p class="card-text mb-0">Games left: {{data['pistons']['games_left']}}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Last 5 games</h5>
+                {% for game in data['pistons']['last_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+            <li class="list-group-item">
+                <h5 class="card-title">Next 5 games</h5>
+                {% for game in data['pistons']['next_games'] %}
+                    <p class="card-text mb-0">{{game}}</p>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+</html>

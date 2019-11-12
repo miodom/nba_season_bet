@@ -11,7 +11,7 @@ player_ids = {'heat': 202710, 'spurs': 201942, 'pacers': 203506, 'pistons': 2019
 
 
 def get_teams_stats():
-    team_stats = leaguestandings.LeagueStandings().get_dict()['resultSets'][0]
+    team_stats = leaguestandings.LeagueStandings(timeout=60).get_dict()['resultSets'][0]
 
     team_stats_list = team_stats['rowSet']
     headers = team_stats['headers']
@@ -34,7 +34,7 @@ def get_teams_stats():
 
 def get_team_prev_games(team, n=5):
     gamelog = leaguegamefinder.LeagueGameFinder(team_id_nullable=team_ids[team],
-                                                season_nullable='2019-20').get_dict()['resultSets'][0]
+                                                season_nullable='2019-20', timeout=60).get_dict()['resultSets'][0]
 
     games = gamelog['rowSet']
     headers = gamelog['headers']
@@ -54,7 +54,7 @@ def get_team_prev_games(team, n=5):
 
 def get_players_next_games(team, n=5):
     player_next_games = playernextngames.PlayerNextNGames(player_id=player_ids[team],
-                                                          number_of_games=n).get_dict()['resultSets'][0]
+                                                          number_of_games=n, timeout=60).get_dict()['resultSets'][0]
 
     games = player_next_games['rowSet']
     headers = player_next_games['headers']
@@ -86,3 +86,8 @@ def main_page():
                           'next_games': get_players_next_games(team, n=5)}
                    for team in ['heat', 'spurs', 'pacers', 'pistons']}
     return render_template('/template.html', data=result_dict)
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
